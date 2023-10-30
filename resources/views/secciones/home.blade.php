@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-<body>
-    <header>
-        <nav>
-            <a href=""></a>
-        </nav>
-    </header>
-    <main>
+@extends('layout.plantilla')
+@section('title', 'Home')
+@section('main')
+    <h1>Home</h1>
+@endsection
+@section('script')
+    <script>
+        function asdjkabs() {
 
-    </main>
-
-    <h1>HOME SWEET HOME</h1>
-</body>
-</html>
+        }
+        asdjkabs()
+    </script>
+@endsection

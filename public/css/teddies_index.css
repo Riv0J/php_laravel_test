@@ -1,0 +1,22 @@
+.square_thumbnail
+{
+    width: 5rem;
+    aspect-ratio: 1;
+}
+.pseudo_button{
+    all: unset;
+    cursor: pointer;
+    padding: 0.5rem;
+    aspect-ratio: 1;
+
+}
+.pseudo_button i{
+    transition: all 0.15s ease-in-out;
+    font-size: 1.25rem;
+}
+.pseudo_button:hover{
+    color: rgb(76, 133, 255);
+}
+.pseudo_button:hover i{
+    transform: scale(1.1);
+}

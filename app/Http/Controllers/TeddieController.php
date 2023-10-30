@@ -14,11 +14,10 @@ class TeddieController extends Controller
      */
     public function index()
     {
-        $peluches=Teddy::all();
-        return view('peluches',['peluches'=>$peluches]);
-        /*$peluches=Teddy::find();*/
-    }
+        $teddies=Teddy::all();
+        return view('teddies.index',['teddies'=>$teddies]);
 
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -27,6 +26,7 @@ class TeddieController extends Controller
     public function create()
     {
         //
+        return view('teddies.create');
     }
 
     /**
@@ -37,7 +37,19 @@ class TeddieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //recabar los datos del form en un array
+        $data = $request->all();
+
+        //crear nuevo peluche con
+        $nuevo_peluche = new Teddy();
+        $nuevo_peluche->name = $data['name'];
+        $nuevo_peluche->color = $data['color'];
+
+        //guardar el peluche en la bd
+        $nuevo_peluche->save();
+
+        //redireccionar a otro controller, en este caso el index
+        return redirect()->route('peluche.index');
     }
 
     /**
@@ -48,7 +60,11 @@ class TeddieController extends Controller
      */
     public function show($id)
     {
-        //
+        //probar php artisan tinker
+        //2 obtener el peluche que tiene es id de la BD
+        $teddy = Teddy::find($id);
+        //cargar la vista detallada enviandole el peluche (teddies.show)
+        return view('teddies.show',['teddy'=>$teddy]);
     }
 
     /**
@@ -82,6 +98,10 @@ class TeddieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $teddy = Teddy::find($id);
+        $deleted = $teddy->delete();
+
+        //redireccionar a otro controller, en este caso el index
+        return redirect()->route('peluche.index');
     }
 }

@@ -12,11 +12,7 @@ use \App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//busca el nombre de la view+.php
-/*Route::get('/', function () {
-    return view('home');
-});
-*/
+
 //FUNCTION DEL CONTROLLER
 //ruta del request, ruta controlador y funcion que ejecuta, enviada como string
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'welcome'])->name('inicio');
@@ -47,15 +43,13 @@ Route::get('/saludar/nombre/{username}/edad/{edad}', function ($username, $edad)
     'edad' => '[0-9]{2}',
 ])->name('saluditos');
 
-//POST
-Route::post('/saludar/nombre/{username}/apellido/{lastname}', function ($username, $lastname) {
-    echo "hola $username $lastname";
-});
-
 //RUTA DE RECURSOS, GENERA TODAS LAS RUTAS CREATE, INSERT, INDEX. ETC DE LA CLASE
 //ver todos los recursos php artisan route:list
 Route::resource('peluche', App\Http\Controllers\TeddieController::class);
 
 // SE LLAMARÍA EN UN LINK: <a href = {{route('peluche.create')}}></a>
 
-//php artisan
+
+Route::post('/peluche/delete/{id}', [App\Http\Controllers\TeddieController::class, 'destroy'])->name('peluche.delete');
+
+Route::get('/galeria', [App\Http\Controllers\GaleriaController::class, 'galeria'])->name('galeria');
